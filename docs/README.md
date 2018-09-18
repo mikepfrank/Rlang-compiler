@@ -23,10 +23,14 @@ The sections of this document that pertain to the R language include:
 	
 * Section 9.5.6, "Physical simulations," pp. 241-243. (Describes an example application.)
 	
-* Appendix C, "The R reversible programming language," pp. 295-310.
+* Appendix C, "The R reversible programming language," pp. 295-310.  A complete 
+reference for the user-visible R language constructs.
 	
-* Appendix D, "The R language compiler," pp. 311-376.
+* Appendix D, "The R language compiler," pp. 311-376.  A complete reference for  
+the compiler's intermediate language constructs; also includes complete source 
+code for the compiler.
 	
-* Appendix E, "Reversible Schroedinger wave simulation," pp. 377-406.
+* Appendix E, "Reversible Schroedinger wave simulation," pp. 377-406.  Includes
+source code and complete compiled output in the PISA assembly language.
 
 
