@@ -3,7 +3,7 @@
 This subdirectory of the `Rlang-compiler` repository contains the following
 documents pertaining to the R language compiler in its various iterations.
 
-## "The R Programming Language and Compiler" (July 1997) ([`MIT-RCP-Memo#M8-RProgLang.pdf`](MIT-RCP-Memo#M8-RProgLang.pdf "MIT RCP Memo#M8"))
+## "The R Programming Language and Compiler" (July 1997) ([`MIT-RCP-MemoM8-RProgLang.pdf`](MIT-RCP-MemoM8-RProgLang.pdf "MIT RCP Memo #M8"))
 
 This research memo, which was produced as part of the MIT Reversible Computing Project, 
 which ran from approximately 1996-1999 in the MIT AI Lab, was the original documentation 
