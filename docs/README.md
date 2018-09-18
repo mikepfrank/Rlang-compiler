@@ -12,14 +12,14 @@ the University of Florida after I started my faculty position there.
 
 The sections of this document that pertain to the R language include:
 
-	* Section 9.4, "Reversible programming languages," pp. 236-239.
+* Section 9.4, "Reversible programming languages," pp. 236-239.
 	
-	* Section 9.5.6, "Physical simulations," pp. 241-243. (Describes an example application.)
+* Section 9.5.6, "Physical simulations," pp. 241-243. (Describes an example application.)
 	
-	* Appendix C, "The R reversible programming language," pp. 295-310.
+* Appendix C, "The R reversible programming language," pp. 295-310.
 	
-	* Appendix D, "The R language compiler," pp. 311-376.
+* Appendix D, "The R language compiler," pp. 311-376.
 	
-	* Appendix E, "Reversible Schroedinger wave simulation," pp. 377-406.
+* Appendix E, "Reversible Schroedinger wave simulation," pp. 377-406.
 
 
