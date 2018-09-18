@@ -18,10 +18,14 @@ the ([`docs/` subdirectory](docs "docs/ subdirectory"))
 
 Contents of the '`Rlang-compiler/`' repository are as follows:
 
-### 2.1. Documentation subdirectory ([`docs/`](docs "docs/ subdirectory")).
+### 2.1.  Documentation subdirectory ([`docs/`](docs "docs/ subdirectory")).
 
 Contains various documents describing the R language compiler, *Rcomp*, in its various iterations.
 
-### 2.2. README file ([`README.md`](README.md "README.md file")).
+### 2.2.  Source code subdirectory ([`src/`](src "src/ subdirectory")).
+
+This directory contains the complete source code for the original
+
+### 2.3. README file ([`README.md`](README.md "README.md file")).
 
 This file, written in GitHub-flavored Markdown syntax.
