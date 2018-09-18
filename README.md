@@ -1,15 +1,16 @@
 # Rlang-compiler
-Compiler in Common Lisp for the "R" reversible programming language.  Copyright (C)1997 by Michael P. Frank.
+Compiler in Common Lisp for the "R" reversible programming language.  Copyright (C)1997-2018 by Michael P. Frank.
 
 ## 1. Introduction
 
-R is a reversible programming language; that is, it is a language for writing programs that can be executed in 
+R is a *reversible* programming language; that is, it is a language for writing programs that can be executed in 
 either the forward or the reverse time direction.  Such languages have a number of applications, such as for 
 rolling back processes to synchronize concurrent systems, or for facilitating more energy-efficient hardware
-implementations of algorithms.  R was historically one of the *earliest* reversible languages, predated only
-by Henry Baker's Psi-Lisp, and Lutz and Derby's Janus (although R was invented independently of Janus).  The
-syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthesis-heavy style of punctuation.
-For more information, see the various documents in the ([`docs/` subdirectory](docs "docs/ subdirectory"))
+implementations of algorithms.  Created in 1997, R was historically one of the *earliest* reversible languages, 
+predated only by Henry Baker's Psi-Lisp, and Lutz and Derby's Janus (although R was invented independently of 
+Janus).  The syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthesis-heavy style of 
+punctuation.  For more information, see the various documents contained in 
+the ([`docs/` subdirectory](docs "docs/ subdirectory"))
 
 ## 2. Structure of this repository
 
