@@ -19,3 +19,6 @@ Contents of the '`Rlang-compiler/`' repository are as follows:
 
 Contains various documents describing the R language compiler, *Rcomp*, in its various iterations.
 
+### 2.2. README file ([`README.md`](README.md "README.md file")).
+
+This file, written in GitHub-flavored Markdown syntax.
