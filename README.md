@@ -1,5 +1,7 @@
-# Rlang-compiler
-Compiler in Common Lisp for the "R" reversible programming language.  Copyright (C)1997-2018 by Michael P. Frank.
+# The R language compiler (`Rlang-compiler`)
+
+This repository provides Common Lisp source code for the compiler for the "R" reversible programming language.  
+Copyright (C)1997-2018 by Michael P. Frank.
 
 ## 1. Introduction
 
