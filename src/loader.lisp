@@ -14,14 +14,14 @@
 (load "variables.lisp")       ; Creating, destroying, moving variables.
 (load "branches.lisp")	      ; Branches, branch pairs, labels.
 (load "expression.lisp")      ; Binding variables to multiply-nested expressions.
-(load "clike.lisp")	      ; C-like assignment-operator statements.
-(load "print.lisp")	      ; Data output.
+(load "clike.lisp")           ; C-like assignment-operator statements.
+(load "print.lisp")	          ; Data output.
 (load "controlflow.lisp")     ; High-level conditionals & loops.
 (load "subroutines.lisp")     ; Support for subroutine calls.
 (load "staticdata.lisp")      ; Static data definitions.
 (load "program.lisp")	      ; Highest-level constructs.  Standard library.
 (load "library.lisp")         ; Standard library of R routines.
-(load "files.lisp")	      ; File compiler.
+(load "files.lisp")	          ; File compiler.
 
 (load "test.lisp")            ; Example programs.
 

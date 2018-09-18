@@ -24,7 +24,8 @@ Contains various documents describing the R language compiler, *Rcomp*, in its v
 
 ### 2.2.  Source code subdirectory ([`src/`](src "src/ subdirectory")).
 
-This directory contains the complete source code for the original
+This directory contains the complete source code for the original version of the R compiler,
+which was developed in 1997 (with minor revisions in 2001) by M. Frank.
 
 ### 2.3. README file ([`README.md`](README.md "README.md file")).
 
