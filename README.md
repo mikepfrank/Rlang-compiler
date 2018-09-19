@@ -29,7 +29,7 @@ such as [CygWin](https://www.cygwin.com/ "CygWin home page").
 
 ## 3.  A quick tutorial.
 
-With CLISP installed in your shell environment, `cd` to the `src2/` subdirectory of this environment, and 
+With CLISP installed in your shell environment, `cd` to the `src2/` subdirectory of this repository's file hierarchy, and 
 type `clisp`; you will see a welcome screen something like this:
 
       i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
