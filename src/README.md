@@ -5,5 +5,8 @@ source code files for the original version of R compiler *Rcomp*, written in
 Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 
 * [`loader.lisp`](loader.lisp "System loader") - This loads up all parts of 
-the *Rcomp* program in an appropriate order.
+	the *Rcomp* program in an appropriate order.
 
+* [`util.lisp`](util.lisp "Utilities") - Defines general-purpose utility
+	functions and macros that we use.
+	
