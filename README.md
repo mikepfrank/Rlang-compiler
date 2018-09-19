@@ -27,6 +27,10 @@ Contains various documents describing the R language compiler, *Rcomp*, in its v
 This directory contains the complete source code for the original version of the R compiler,
 which was developed in 1997 (with minor revisions in 2001) by M. Frank.
 
-### 2.3. README file ([`README.md`](README.md "README.md file")).
+### 2.3.  Test code subdirectory ([`test/`](test "test/ subdirectory")).
+
+This directory contains various files intended for purposes of testing/exercising the compiler.
+
+### 2.4. README file ([`README.md`](README.md "README.md file")).
 
 This file, written in GitHub-flavored Markdown syntax.

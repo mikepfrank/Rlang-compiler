@@ -58,3 +58,12 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
   - [`program.lisp`](program.lisp "Whole-program constructs") - Defines very
 		high-level constructs for wrapping around the entire program.
 		
+  - [`library.lisp`](library.lisp "Standard library") - Defines constructs that
+		expand into code for standard subroutine libraries.  Currently the 
+		library is very minimal.
+		
+* [`files.lisp`](files.lisp "File compilation") - Provides support for reading
+		the source code to compile from a file.
+		
+Additional source code for testing purposes can be found in the `test/`
+directory (parallel to this directory).
