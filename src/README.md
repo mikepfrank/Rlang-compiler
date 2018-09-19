@@ -9,4 +9,7 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 
 * [`util.lisp`](util.lisp "Utilities") - Defines general-purpose utility
 	functions and macros that we use.
-	
+
+* [`infrastructure.lisp`](infrastructure.lisp "Compilation infrastructure") -
+	Defines our macro-expansion-like facility for defining how to compile
+	language constructs.
