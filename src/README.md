@@ -26,4 +26,9 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
   - [`regstack.lisp`](regstack.lisp "Register/stack manipulation") - Defines
 		low-level constructs for direct manipulation of registers and the 
 		stack.
+
+  - [`variables.lisp`](variables.lisp "Manipulation of variables") - Defines
+		high- to low-level constructs for manipulation of variables in
+		variable assignments (environments).
 		
+
