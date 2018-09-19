@@ -17,7 +17,7 @@ same concepts.
 
 The syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthesis-heavy 
 style of punctuation.  For more information, see the various documents contained in 
-the ([`docs/` subdirectory](docs "docs/ subdirectory"))
+the [`docs/`](docs "docs/ subdirectory") subdirectory.
 
 ## 2. Structure of this repository.
 
