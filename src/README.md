@@ -37,3 +37,6 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 		
   - [`expression.lisp`](expression.lisp "Expression expansion") - Constructs
 		and low-level functions for expanding nested expressions.
+		
+  - [`clike.lisp`](clike.lisp "C-like constructs") - Defines constructs for
+		various user-level C-like operators.
