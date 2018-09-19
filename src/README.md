@@ -13,3 +13,8 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 * [`infrastructure.lisp`](infrastructure.lisp "Compilation infrastructure") -
 	Defines our macro-expansion-like facility for defining how to compile
 	language constructs.
+
+* [`location.lisp`](location.lisp "Location objects") - Defines some functions
+	for working with objects that describe a variable's location in the 
+	register file or the stack.
+	
