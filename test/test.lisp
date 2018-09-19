@@ -4,10 +4,10 @@
 ;;; Testing code.
 
 (defun test-sch ()
-  (rcompile-file "sch.r"))
+  (rcompile-file "../test/sch/sch.r"))
 
 (defun test-sch-debug ()
-  (rcompile-file "sch.r" :debug t))
+  (rcompile-file "../test/sch/sch.r" :debug t))
 
 (defparameter *test*
   '(defprog example1
