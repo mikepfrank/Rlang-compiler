@@ -65,5 +65,5 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 * [`files.lisp`](files.lisp "File compilation") - Provides support for reading
 		the source code to compile from a file.
 		
-Additional source code for testing purposes can be found in the `test/`
+Additional source code for testing purposes can be found in the [`test/`](../test "Test directory")
 directory (parallel to this directory).
