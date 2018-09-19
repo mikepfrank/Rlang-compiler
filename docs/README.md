@@ -28,7 +28,8 @@ reference for the user-visible R language constructs.
 	
 * Appendix D, "The R language compiler," pp. 311-376.  A complete reference for  
 the compiler's intermediate language constructs; also includes complete source 
-code for the compiler.
+code for the compiler.  (Also in the [`src/`](../src "/src subdirectory") subdirectory,
+parallel to this directory.)
 	
 * Appendix E, "Reversible Schroedinger wave simulation," pp. 377-406.  Includes
 source code and complete compiled output in the PISA assembly language.
@@ -37,5 +38,6 @@ source code and complete compiled output in the PISA assembly language.
 
 This document was the final report for a Senior Design project conducted by Christopher R. Clark at the 
 University of Florida CISE department in 2001.  In this project, Chris extended the R language to add
-new features such as support for `else` clauses and string literals.
+new features such as support for `else` clauses and string literals.  The modified code can be found in the 
+[`src2/`](../src2 "/src2 subdirectory") subdirectory (parallel to this `docs/` directory).
 
