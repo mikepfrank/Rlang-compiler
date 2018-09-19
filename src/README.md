@@ -44,4 +44,9 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
   - [`print.lisp`](print.lisp "Printing output") - Defines a few very simple
 		constructs for producing output.
 
+  - [`controlflow.lisp`](controlflow.lisp "Control flow") - Defines user-level 
+		to intermediate-level control flow constructs such as conditionals
+		and looping.
 		
+  - [`subroutines.lisp`](subroutines.lisp "Subroutine support") - Provides
+		high- and low-level support for subroutines.
