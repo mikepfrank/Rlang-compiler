@@ -5,14 +5,14 @@ Copyright (C)1997-2018 by Michael P. Frank.
 
 ## 1. Introduction.
 
-R is a *reversible* programming language; that is, it is a language for writing programs that can be executed in 
-either the forward or the reverse time direction.  Such languages have a number of applications, such as for 
-rolling back processes to synchronize concurrent systems, or for facilitating more energy-efficient hardware
-implementations of algorithms.  
+R is a *reversible* programming language; that is, it is a high-level language for writing programs that can 
+be executed in either the forward or the reverse time direction.  Such languages have a number of applications, 
+such as for rolling back processes to synchronize concurrent systems, or for facilitating more energy-efficient 
+hardware implementations of algorithms.  
 
-Created in 1997 [1], R was historically one of the *earliest* reversible languages, 
-predated only by Lutz and Derby's Janus [2] in 1982, and Henry Baker's Psi-Lisp [3] in 1992 (although R was invented 
-independently of Janus).  
+Created in 1997 [1], R was historically one of the *earliest* reversible high-level languages, 
+predated only by Lutz and Derby's Janus [2] in 1982, and Henry Baker's Psi-Lisp [3] in 1992 (although R was 
+invented independently of Janus, we reinvented some of the same concepts).  
 
 The syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthesis-heavy 
 style of punctuation.  For more information, see the various documents contained in 
