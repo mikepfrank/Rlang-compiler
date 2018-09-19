@@ -11,8 +11,9 @@ such as for rolling back processes to synchronize concurrent systems, or for fac
 hardware implementations of algorithms.  
 
 Created in 1997 [1], R was historically one of the *earliest* reversible high-level languages, 
-predated only by Lutz and Derby's Janus [2] in 1982, and Henry Baker's Psi-Lisp [3] in 1992 (although R was 
-invented independently of Janus, we reinvented some of the same concepts).  
+predated only by Lutz and Derby's Janus [2] in 1982, and Henry Baker's Psi-Lisp [3] in 1992.
+Although R was actually developed independently of Janus, we ended up reinventing some of the 
+same concepts.  
 
 The syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthesis-heavy 
 style of punctuation.  For more information, see the various documents contained in 
