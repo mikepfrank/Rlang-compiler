@@ -13,7 +13,7 @@
 
 ;; Given a form, get it into the canonical form where the operator is
 ;; first.
-(defun canonicalize (form)
+(defun canonicalize-form (form)
   (if (infix-form? form)
       `(,(second form) ,(first form) . ,(cddr form))
     form))
@@ -97,7 +97,7 @@
       ;; Make sure that the source code (in case it's a single
       ;; statement) is in the canonical prefix (rather than infix)
       ;; form.
-      (setf source (canonicalize source))
+      (setf source (canonicalize-form source))
       (cond
        ;; If the source is a single statement, replace it with its
        ;; expansion.
@@ -162,7 +162,7 @@
 
 (defun rcomp (source &optional startenv)
   (when (null startenv) (setf startenv (empty-env)))
-  (setf source (canonicalize source))
+  (setf source (canonicalize-form source))
   (cond
    ((null source)
     (values source startenv))
@@ -251,7 +251,7 @@
 	      ;; If first form is an infix form, canonicalize it.
 	      (when (infix-form? form)
 					;(format t "~&Canonicalize.~%")
-		(setf form (canonicalize form)
+		(setf form (canonicalize-form form)
 		      (car source) form)
 					;(myprint (cdr whole))
 		)
