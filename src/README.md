@@ -31,4 +31,6 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 		high- to low-level constructs for manipulation of variables in
 		variable assignments (environments).
 		
-
+  - [`branches.lisp`](branches.lisp "Support for branches") - Constructs
+		providing intermediate- and low-level support for various kinds of
+		branch structures for control flow.
