@@ -18,3 +18,12 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 	for working with objects that describe a variable's location in the 
 	register file or the stack.
 	
+* [`environment.lisp`](environment.lisp "Environment objects") - Defines the 
+	environment objects which map variables to their locations.
+
+* Files defining "macros" for expansion of language constructs:
+
+  - [`regstack.lisp`](regstack.lisp "Register/stack manipulation") - Defines
+		low-level constructs for direct manipulation of registers and the 
+		stack.
+		
