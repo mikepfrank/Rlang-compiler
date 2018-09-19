@@ -1,0 +1,830 @@
+;; pendulum pal file
+_PRESKIP395:    BRA _POSTSKIP396 
+EPSILON:        DATA 203667001 
+_POSTSKIP396:   BRA _PRESKIP395 
+_PRESKIP397:    BRA _POSTSKIP398 
+ALPHAS:         DATA 458243442 
+                DATA 456664951 
+                DATA 455111319 
+                DATA 453582544 
+                DATA 452078627 
+                DATA 450599569 
+                DATA 449145369 
+                DATA 447716027 
+                DATA 446311542 
+                DATA 444931917 
+                DATA 443577149 
+                DATA 442247239 
+                DATA 440942188 
+                DATA 439661994 
+                DATA 438406659 
+                DATA 437176182 
+                DATA 435970563 
+                DATA 434789802 
+                DATA 433633899 
+                DATA 432502854 
+                DATA 431396668 
+                DATA 430315339 
+                DATA 429258869 
+                DATA 428227257 
+                DATA 427220503 
+                DATA 426238607 
+                DATA 425281569 
+                DATA 424349389 
+                DATA 423442068 
+                DATA 422559605 
+                DATA 421701999 
+                DATA 420869252 
+                DATA 420061363 
+                DATA 419278332 
+                DATA 418520159 
+                DATA 417786845 
+                DATA 417078388 
+                DATA 416394790 
+                DATA 415736049 
+                DATA 415102167 
+                DATA 414493143 
+                DATA 413908977 
+                DATA 413349669 
+                DATA 412815220 
+                DATA 412305628 
+                DATA 411820895 
+                DATA 411361019 
+                DATA 410926002 
+                DATA 410515843 
+                DATA 410130542 
+                DATA 409770099 
+                DATA 409434515 
+                DATA 409123788 
+                DATA 408837920 
+                DATA 408576909 
+                DATA 408340757 
+                DATA 408129463 
+                DATA 407943027 
+                DATA 407781450 
+                DATA 407644730 
+                DATA 407532868 
+                DATA 407445865 
+                DATA 407383720 
+                DATA 407346432 
+                DATA 407334003 
+                DATA 407346432 
+                DATA 407383720 
+                DATA 407445865 
+                DATA 407532868 
+                DATA 407644730 
+                DATA 407781450 
+                DATA 407943027 
+                DATA 408129463 
+                DATA 408340757 
+                DATA 408576909 
+                DATA 408837920 
+                DATA 409123788 
+                DATA 409434515 
+                DATA 409770099 
+                DATA 410130542 
+                DATA 410515843 
+                DATA 410926002 
+                DATA 411361019 
+                DATA 411820895 
+                DATA 412305628 
+                DATA 412815220 
+                DATA 413349669 
+                DATA 413908977 
+                DATA 414493143 
+                DATA 415102167 
+                DATA 415736049 
+                DATA 416394790 
+                DATA 417078388 
+                DATA 417786845 
+                DATA 418520159 
+                DATA 419278332 
+                DATA 420061363 
+                DATA 420869252 
+                DATA 421701999 
+                DATA 422559605 
+                DATA 423442068 
+                DATA 424349389 
+                DATA 425281569 
+                DATA 426238607 
+                DATA 427220503 
+                DATA 428227257 
+                DATA 429258869 
+                DATA 430315339 
+                DATA 431396668 
+                DATA 432502854 
+                DATA 433633899 
+                DATA 434789802 
+                DATA 435970563 
+                DATA 437176182 
+                DATA 438406659 
+                DATA 439661994 
+                DATA 440942188 
+                DATA 442247239 
+                DATA 443577149 
+                DATA 444931917 
+                DATA 446311542 
+                DATA 447716027 
+                DATA 449145369 
+                DATA 450599569 
+                DATA 452078627 
+                DATA 453582544 
+                DATA 455111319 
+                DATA 456664951 
+_POSTSKIP398:   BRA _PRESKIP397 
+_PRESKIP399:    BRA _POSTSKIP400 
+PSIR:           DATA 2072809 
+                DATA 3044772 
+                DATA 4418237 
+                DATA 6333469 
+                DATA 8968770 
+                DATA 12546502 
+                DATA 17338479 
+                DATA 23669980 
+                DATA 31921503 
+                DATA 42527251 
+                DATA 55969298 
+                DATA 72766411 
+                DATA 93456735 
+                DATA 118573819 
+                DATA 148615999 
+                DATA 184009768 
+                DATA 225068513 
+                DATA 271948808 
+                DATA 324607187 
+                DATA 382760978 
+                DATA 445857149 
+                DATA 513053161 
+                DATA 583213481 
+                DATA 654924586 
+                DATA 726530060 
+                DATA 796185813 
+                DATA 861933650 
+                DATA 921789572 
+                DATA 973841548 
+                DATA 1016350163 
+                DATA 1047844835 
+                DATA 1067208183 
+                DATA 1073741824 
+                DATA 1067208183 
+                DATA 1047844835 
+                DATA 1016350163 
+                DATA 973841548 
+                DATA 921789572 
+                DATA 861933650 
+                DATA 796185813 
+                DATA 726530060 
+                DATA 654924586 
+                DATA 583213481 
+                DATA 513053161 
+                DATA 445857149 
+                DATA 382760978 
+                DATA 324607187 
+                DATA 271948808 
+                DATA 225068513 
+                DATA 184009768 
+                DATA 148615999 
+                DATA 118573819 
+                DATA 93456735 
+                DATA 72766411 
+                DATA 55969298 
+                DATA 42527251 
+                DATA 31921503 
+                DATA 23669980 
+                DATA 17338479 
+                DATA 12546502 
+                DATA 8968770 
+                DATA 6333469 
+                DATA 4418237 
+                DATA 3044772 
+                DATA 2072809 
+                DATA 1393998 
+                DATA 926112 
+                DATA 607804 
+                DATA 394060 
+                DATA 252382 
+                DATA 159681 
+                DATA 99804 
+                DATA 61622 
+                DATA 37586 
+                DATA 22647 
+                DATA 13480 
+                DATA 7926 
+                DATA 4604 
+                DATA 2642 
+                DATA 1497 
+                DATA 838 
+                DATA 463 
+                DATA 253 
+                DATA 136 
+                DATA 73 
+                DATA 38 
+                DATA 20 
+                DATA 10 
+                DATA 5 
+                DATA 2 
+                DATA 1 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+_POSTSKIP400:   BRA _PRESKIP399 
+_PRESKIP401:    BRA _POSTSKIP402 
+PSII:           DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+                DATA 0 
+_POSTSKIP402:   BRA _PRESKIP401 
+_SUBTOP403:     BRA _SUBBOT404 
+HALFSTEP:       SWAPBR $2 
+                NEG $2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+                ADDI $31 EPSILON 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                EXCH $30 $31 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADD $29 $30 
+                EXCH $30 $31 
+                ADDI $31 -EPSILON 
+                ADDI $30 128 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+                ADD $31 $28 
+_FORTOP407:     BNE $31 $28 _FORBOT408 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+                ADD $3 $31 
+                EXCH $27 $3 
+                SUB $3 $31 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                ADDI $26 ALPHAS 
+                ADD $26 $31 
+                ADDI $1 -7 
+                EXCH $25 $1 
+                ADDI $1 7 
+                ADDI $1 -8 
+                EXCH $24 $1 
+                ADDI $1 8 
+                EXCH $24 $26 
+                ADD $25 $24 
+                EXCH $24 $26 
+                SUB $26 $31 
+                ADDI $26 -ALPHAS 
+                ADD $24 $4 
+                ADD $24 $31 
+                ADDI $1 -9 
+                EXCH $23 $1 
+                ADDI $1 9 
+                EXCH $23 $24 
+                ADD $26 $23 
+                EXCH $23 $24 
+                SUB $24 $31 
+                SUB $24 $4 
+                XOR $23 $5 
+                XOR $5 $23 
+                XOR $26 $4 
+                XOR $4 $26 
+                XOR $26 $4 
+                XOR $25 $3 
+                XOR $3 $25 
+                XOR $25 $3 
+                XOR $24 $2 
+                XOR $2 $24 
+                ADDI $1 -9 
+                BRA SMF 
+                ADDI $1 9 
+                ADD $27 $5 
+                ADDI $1 -9 
+                RBRA SMF 
+                ADDI $1 9 
+                ADD $2 $26 
+                ADD $2 $31 
+                ADDI $1 -10 
+                EXCH $22 $1 
+                ADDI $1 10 
+                EXCH $22 $2 
+                SUB $4 $22 
+                EXCH $22 $2 
+                SUB $2 $31 
+                SUB $2 $26 
+                ADDI $2 ALPHAS 
+                ADD $2 $31 
+                EXCH $4 $2 
+                SUB $3 $4 
+                EXCH $4 $2 
+                SUB $2 $31 
+                ADDI $2 -ALPHAS 
+                ADD $2 $31 
+                ADDI $2 1 
+                ADDI $3 127 
+                ANDX $4 $2 $3 
+                ADDI $3 -127 
+                ADD $3 $26 
+                ADD $3 $4 
+                EXCH $22 $3 
+                ADD $5 $22 
+                EXCH $22 $3 
+                SUB $3 $4 
+                SUB $3 $26 
+                XOR $3 $5 
+                XOR $5 $3 
+                XOR $3 $4 
+                XOR $4 $3 
+                XOR $3 $4 
+                XOR $29 $3 
+                XOR $3 $29 
+                XOR $29 $3 
+                XOR $22 $2 
+                XOR $2 $22 
+                ADDI $1 -10 
+                BRA SMF 
+                ADDI $1 10 
+                SUB $27 $5 
+                ADDI $1 -10 
+                RBRA SMF 
+                ADDI $1 10 
+                ADD $2 $26 
+                ADD $2 $29 
+                ADDI $1 -11 
+                EXCH $21 $1 
+                ADDI $1 11 
+                EXCH $21 $2 
+                SUB $4 $21 
+                EXCH $21 $2 
+                SUB $2 $29 
+                SUB $2 $26 
+                ADDI $2 127 
+                ANDX $29 $22 $2 
+                ADDI $2 -127 
+                ADDI $22 -1 
+                SUB $22 $31 
+                ADD $2 $31 
+                ADDI $2 -1 
+                ADDI $4 127 
+                ANDX $5 $2 $4 
+                ADDI $4 -127 
+                ADD $4 $26 
+                ADD $4 $5 
+                EXCH $22 $4 
+                ADD $21 $22 
+                EXCH $22 $4 
+                SUB $4 $5 
+                SUB $4 $26 
+                XOR $4 $5 
+                XOR $5 $4 
+                XOR $21 $4 
+                XOR $4 $21 
+                XOR $21 $4 
+                XOR $22 $2 
+                XOR $2 $22 
+                ADDI $1 -11 
+                BRA SMF 
+                ADDI $1 11 
+                SUB $27 $5 
+                ADDI $1 -11 
+                RBRA SMF 
+                ADDI $1 11 
+                ADD $2 $26 
+                ADD $2 $21 
+                EXCH $29 $2 
+                SUB $4 $29 
+                EXCH $29 $2 
+                SUB $2 $21 
+                SUB $2 $26 
+                ADDI $2 127 
+                ANDX $21 $22 $2 
+                ADDI $2 -127 
+                ADDI $22 1 
+                SUB $22 $31 
+                ADD $25 $31 
+                EXCH $27 $25 
+                SUB $25 $31 
+                ADDI $31 1 
+                ADDI $1 -11 
+                EXCH $21 $1 
+                ADDI $1 11 
+                XOR $29 $3 
+                XOR $3 $29 
+                ADDI $1 -10 
+                EXCH $22 $1 
+                ADDI $1 10 
+                XOR $2 $24 
+                XOR $24 $2 
+                XOR $3 $25 
+                XOR $25 $3 
+                XOR $4 $26 
+                XOR $26 $4 
+                XOR $5 $23 
+                XOR $23 $5 
+                ADDI $1 -9 
+                EXCH $23 $1 
+                ADDI $1 9 
+                ADDI $1 -8 
+                EXCH $24 $1 
+                ADDI $1 8 
+                ADDI $1 -7 
+                EXCH $25 $1 
+                ADDI $1 7 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+_FORBOT408:     BNE $31 $30 _FORTOP407 
+                SUB $31 $30 
+                ADDI $30 -128 
+                ADDI $28 EPSILON 
+                EXCH $30 $28 
+                SUB $29 $30 
+                EXCH $30 $28 
+                ADDI $28 -EPSILON 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+_SUBBOT404:     BRA _SUBTOP403 
+_SUBTOP444:     BRA _SUBBOT445 
+PRINTWAVE:      SWAPBR $2 
+                NEG $2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+                ADDI $31 128 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADD $30 $29 
+_FORTOP446:     BNE $30 $29 _FORBOT447 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+                OUTPUT $28 
+                ADD $28 $3 
+                ADD $28 $30 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                EXCH $26 $28 
+                ADD $27 $26 
+                EXCH $26 $28 
+                SUB $28 $30 
+                SUB $28 $3 
+                OUTPUT $27 
+                ADD $26 $3 
+                ADD $26 $30 
+                EXCH $28 $26 
+                SUB $27 $28 
+                EXCH $28 $26 
+                SUB $26 $30 
+                SUB $26 $3 
+                ADDI $30 1 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+_FORBOT447:     BNE $30 $31 _FORTOP446 
+                SUB $30 $31 
+                ADDI $31 -128 
+                ADDI $29 1 
+                OUTPUT $29 
+                ADDI $29 -1 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+_SUBBOT445:     BRA _SUBTOP444 
+_SUBTOP457:     BRA _SUBBOT458 
+SMF:            SWAPBR $2 
+                NEG $2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                ADDI $29 1 
+                ADD $31 $3 
+_IFTOP459:      BGEZ $3 _IFBOT460 
+                NEG $31 
+_IFBOT460:      BGEZ $3 _IFTOP459 
+                ADD $30 $4 
+_IFTOP461:      BGEZ $4 _IFBOT462 
+                NEG $30 
+_IFBOT462:      BGEZ $4 _IFTOP461 
+                RL $29 31 
+                ADDI $1 -7 
+                EXCH $25 $1 
+                ADDI $1 7 
+                ADDI $25 1 
+                ADDI $1 -8 
+                EXCH $24 $1 
+                ADDI $1 8 
+                ADDI $24 32 
+                ADDI $1 -9 
+                EXCH $23 $1 
+                ADDI $1 9 
+                ADD $23 $25 
+_FORTOP463:     BNE $23 $25 _FORBOT464 
+                RR $29 1 
+                ANDX $27 $31 $29 
+_IFTOP467:      BEQ $27 $0 _IFBOT468 
+                SRLVX $28 $30 $23 
+                ADD $26 $28 
+                SRLVX $28 $30 $23 
+_IFBOT468:      BEQ $27 $0 _IFTOP467 
+                ANDX $27 $31 $29 
+                ADDI $23 1 
+_FORBOT464:     BNE $23 $24 _FORTOP463 
+                SUB $23 $24 
+                ADDI $24 -32 
+                ADDI $25 -1 
+_IFTOP469:      BGEZ $3 _IFBOT470 
+                NEG $26 
+_IFBOT470:      BGEZ $3 _IFTOP469 
+_IFTOP471:      BGEZ $4 _IFBOT472 
+                NEG $26 
+_IFBOT472:      BGEZ $4 _IFTOP471 
+                ADD $5 $26 
+_IFTOP473:      BGEZ $4 _IFBOT474 
+                NEG $30 
+_IFBOT474:      BGEZ $4 _IFTOP473 
+                SUB $30 $4 
+_IFTOP475:      BGEZ $3 _IFBOT476 
+                NEG $31 
+_IFBOT476:      BGEZ $3 _IFTOP475 
+                SUB $31 $3 
+                ADDI $29 -1 
+                ADDI $1 -9 
+                EXCH $23 $1 
+                ADDI $1 9 
+                ADDI $1 -8 
+                EXCH $24 $1 
+                ADDI $1 8 
+                ADDI $1 -7 
+                EXCH $25 $1 
+                ADDI $1 7 
+                ADDI $1 -6 
+                EXCH $26 $1 
+                ADDI $1 6 
+                ADDI $1 -5 
+                EXCH $27 $1 
+                ADDI $1 5 
+                ADDI $1 -4 
+                EXCH $28 $1 
+                ADDI $1 4 
+                ADDI $1 -3 
+                EXCH $29 $1 
+                ADDI $1 3 
+                ADDI $1 -2 
+                EXCH $30 $1 
+                ADDI $1 2 
+                ADDI $1 -1 
+                EXCH $31 $1 
+                ADDI $1 1 
+_SUBBOT458:     BRA _SUBTOP457 
+_MAINTOP:       BRA _MAINBOT 
+                .START SCHROED 
+SCHROED:        START 
+                ADDI $2 1 
+                ADDI $3 1001 
+                ADD $4 $2 
+_FORTOP477:     BNE $4 $2 _FORBOT478 
+                XOR $5 $4 
+                XOR $4 $5 
+                ADDI $4 PSII 
+                XOR $6 $3 
+                XOR $3 $6 
+                ADDI $3 PSIR 
+                XOR $7 $2 
+                XOR $2 $7 
+                BRA HALFSTEP 
+                ADDI $3 -PSIR 
+                ADDI $4 -PSII 
+                ADDI $4 PSIR 
+                ADDI $3 PSII 
+                RBRA HALFSTEP 
+                ADDI $3 -PSII 
+                ADDI $4 -PSIR 
+                ADDI $3 PSIR 
+                BRA PRINTWAVE 
+                ADDI $3 -PSIR 
+                ADDI $3 PSII 
+                BRA PRINTWAVE 
+                ADDI $3 -PSII 
+                ADDI $5 1 
+                XOR $2 $7 
+                XOR $7 $2 
+                XOR $3 $6 
+                XOR $6 $3 
+                XOR $4 $5 
+                XOR $5 $4 
+_FORBOT478:     BNE $4 $3 _FORTOP477 
+                SUB $4 $3 
+                ADDI $3 -1001 
+                ADDI $2 -1 
+                FINISH 
+_MAINBOT:       BRA _MAINTOP 
