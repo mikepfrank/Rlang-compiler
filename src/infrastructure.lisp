@@ -12,7 +12,8 @@
        (get (second form) 'is-infix)))
 
 ;; Given a form, get it into the canonical form where the operator is
-;; first.
+;; first.  NOTE: This function used to be named just "canonicalize",
+;; but that is a reserved name in the "EXT" package.  Changed 9/18/18.
 (defun canonicalize-form (form)
   (if (infix-form? form)
       `(,(second form) ,(first form) . ,(cddr form))
