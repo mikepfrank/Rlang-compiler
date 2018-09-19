@@ -50,3 +50,9 @@ Common Lisp by M. Frank in 1997 (with minor modifications through 2001).
 		
   - [`subroutines.lisp`](subroutines.lisp "Subroutine support") - Provides
 		high- and low-level support for subroutines.
+		
+  - [`staticdata.lisp`](staticdata.lisp "Static data objects") - Defines 
+		constructs for defining static data objects.  Currently this is the
+		only way to provide input to a program.
+		
+  
