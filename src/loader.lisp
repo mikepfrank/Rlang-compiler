@@ -23,7 +23,7 @@
 (load "library.lisp")         ; Standard library of R routines.
 (load "files.lisp")           ; File compiler.
 
-(load "test.lisp")            ; Example programs.
+(load "../test/test.lisp")            ; Example programs.
 
 ;; Command to reload the system.
 (defun l () (load "loader.lisp"))           

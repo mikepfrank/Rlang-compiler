@@ -1,9 +1,9 @@
-# The R language compiler (`Rlang-compiler`)
+# The R language compiler (`Rlang-compiler`).
 
 This repository provides Common Lisp source code for the compiler for the *R* reversible programming language.  
 Copyright (C)1997-2018 by Michael P. Frank.
 
-## 1. Introduction
+## 1. Introduction.
 
 R is a *reversible* programming language; that is, it is a language for writing programs that can be executed in 
 either the forward or the reverse time direction.  Such languages have a number of applications, such as for 
@@ -14,7 +14,7 @@ Janus).  The syntax and semantics of R is vaguely C-like, but with a Lisp-like, 
 punctuation.  For more information, see the various documents contained in 
 the ([`docs/` subdirectory](docs "docs/ subdirectory"))
 
-## 2. Structure of this repository
+## 2. Structure of this repository.
 
 Contents of the '`Rlang-compiler/`' repository are as follows:
 
