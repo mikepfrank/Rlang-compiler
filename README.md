@@ -22,15 +22,21 @@ Contents of the '`Rlang-compiler/`' repository are as follows:
 
 Contains various documents describing the R language compiler, *Rcomp*, in its various iterations.
 
-### 2.2.  Source code subdirectory ([`src/`](src "src/ subdirectory")).
+### 2.2.  Original source code subdirectory ([`src/`](src "src/ subdirectory")).
 
 This directory contains the complete source code for the original version of the R compiler,
 which was developed in 1997 (with minor revisions in 2001) by M. Frank.
 
-### 2.3.  Test code subdirectory ([`test/`](test "test/ subdirectory")).
+### 2.3.  Improved source code subdirectory ([`src2/`](src2 "src2/ subdirectory")).
+
+This directory contains a version of the R language compiler modified by University of Florida student 
+Chris Clark for his senior project during the Fall semester of 2001.  The ([`docs/`](docs "docs/ subdirectory"))
+subdirectory contains Chris' final report which describes the details of the changes made to the compiler.
+
+### 2.4.  Test code subdirectory ([`test/`](test "test/ subdirectory")).
 
 This directory contains various files intended for purposes of testing/exercising the compiler.
 
-### 2.4. README file ([`README.md`](README.md "README.md file")).
+### 2.5. README file ([`README.md`](README.md "README.md file")).
 
 This file, written in GitHub-flavored Markdown syntax.
