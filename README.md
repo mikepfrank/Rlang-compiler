@@ -210,6 +210,10 @@ This directory contains various files intended for purposes of testing/exercisin
 
 This file, written in GitHub-flavored Markdown syntax.
 
+### 3.6.  To-Do file ([`TO-DO.txt`](TO-DO.txt "To-Do text file")).
+
+Notes on things to do with this repository.
+
 ## References:
 
 [1] Michael P. Frank, "[The R Programming Language and Compiler](docs/MIT-RCP-MemoM8-RProgLang.pdf "Memo #M8")," 

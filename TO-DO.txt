@@ -1,0 +1,13 @@
+Things To Do on this project:
+
+	* Rename R (to YaR or something?)
+
+	* Review Chris's changes in detail, merge them into main src/.
+
+	* Go through the entire compiler code, cleaning it up and fixing bugs.
+
+	* Integrate some PendVM version into this repo (the original one, for historical reference?)
+
+	* Create a wider variety of examples, more sophisticated test benches, etc.
+
+	* Extend the language to support more sophisticated language features
