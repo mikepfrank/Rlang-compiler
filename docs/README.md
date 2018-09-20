@@ -12,10 +12,10 @@ about the compiler internals) was later recycled into my doctoral dissertation (
 
 ## _Reversibility for Efficient Computing_ (M. Frank, Dec. 1999) ([`Frank-99-PhD-bookmarked.pdf`](Frank-99-PhD-bookmarked.pdf "dissertation PDF")).
 
-This document is the unofficial (but *unabridged*) revised manuscript of M. Frank's (*i.e.*, my) 1999 
+This document is the unofficial (but *unabridged*) revised manuscript of my (M. Frank's) 1999 
 MIT doctoral dissertation.  I published this extended version (which includes some material that was
-removed from the official version that filed with the MIT Libraries) online in the Fall of 1999 at 
-the University of Florida after I started my faculty position there.
+removed from the official version that was filed with the MIT Libraries) online in the Fall of 1999 at 
+the University of Florida, after I started my faculty position there.
 
 The sections of this document that pertain to the R language include:
 
