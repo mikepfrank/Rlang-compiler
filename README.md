@@ -105,7 +105,7 @@ At this point, you can interactively enter a short program to compile:
                 (defmain hello
                     (println hi))   )))
                     
-This produces the following output in PAL (Pendulum Assembly Language):
+This produces the following output in PAL (Pendulum Assembly Language).  (Which clearly needs to be more optimized.)
 
     _PRESKIP97:     BRA _POSTSKIP98
     HI:             DATA 1819043144
