@@ -19,6 +19,12 @@ The syntax and semantics of R is vaguely C-like, but with a Lisp-like, parenthes
 style of punctuation.  For more information, see the various documents contained in 
 the [`docs/`](docs "docs/ subdirectory") subdirectory.
 
+Please note that *R* is unrelated to the statistics language of the same name.  When our R was named, in 1997, 
+the other one was not yet widely known.  Since then, the R statistics language has become very popular, so it
+might be a good idea to rename the R reversible language to avoid confusion.  One alternate name that I have 
+used for it occasionally is "ЯR" (pronounced "yar"; the backwards R is Cyrillic "ya").  In ASCII this can be 
+rendered "YaR" and taken to mean "Yet another R" or "Yet another Reversible (language)."
+
 ## 2. Requirements.
 
 *Rcomp* is written in the [Common Lisp](https://en.wikipedia.org/wiki/Common_Lisp "CL wiki page") programming 
