@@ -1,8 +1,8 @@
 Things To Do on this project:
 
-	[ ]  Rename R (to YaR or something?)
+	[ ]  Consider renaming R (to YaR or something?)
 
-	[ ]  Review Chris's changes in detail, merge them into main src/.
+	[.]  Review Chris's changes in detail (started doing this in COMPARE.TXT).
 
 	[ ]  Go through the entire compiler code, cleaning it up and fixing bugs.
 
