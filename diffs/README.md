@@ -4,7 +4,7 @@ This directory contains several files documenting differences between
 the [`src/`](../src "src/ directory") and [`src2/`](../src2 "src2/ directory") 
 directories.
 
-## [`COMPARE.txt`](diffs/COMPARE.txt "COMPARE.txt file") file.
+## [`COMPARE.txt`](COMPARE.txt "COMPARE.txt file") file.
 
 This file summarizes a side-by-side comparison of the original (`src/`) and 
 improved (`src2/`) versions of the *Rcomp* compiler.
