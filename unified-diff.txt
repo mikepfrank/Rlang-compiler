@@ -1,0 +1,781 @@
+diff -ruw '--exclude=README.*' src/clike.lisp src2/clike.lisp
+--- src/clike.lisp	2001-08-04 19:32:36.000000000 -0600
++++ src2/clike.lisp	2018-09-20 20:42:52.394077800 -0600
+@@ -70,8 +70,7 @@
+    ((and (register? var) (static-array? val env))
+     `(,var += ,(intern (concatenate 'string "-" (symbol-name val)))))
+    ((and (register? var) (static-val-addr? val env))
+-    `(addi ,var ,(intern (concatenate 'string "-"
+-				      (symbol-name (second val))))))
++    `(addi ,var ,(intern (concatenate 'string "-" (symbol-name (second val))))))
+    ((and (register? var)
+ 	 (literal? val env)
+ 	 (negated-sym? val))
+diff -ruw '--exclude=README.*' src/controlflow.lisp src2/controlflow.lisp
+--- src/controlflow.lisp	2001-08-04 13:27:36.000000000 -0600
++++ src2/controlflow.lisp	2018-09-20 20:43:21.081161700 -0600
+@@ -18,6 +18,8 @@
+ ;; to be wrapped around the entire IF.  And things like (EXPR1 > EXPR2)
+ ;; need to be transformed into ((EXPR1 - EXPR2) > 0).
+ 
++
++#| old version of IF
+ (defconstruct if (condexpr then &body body)
+   ;; If the user forgets the word THEN, be nice to him, and figure out what he meant.
+   (if (not (eq then 'then))
+@@ -50,65 +52,129 @@
+       (let ((tv (gentemp)))
+ 	`(let (,tv <- ,condexpr)
+ 	   (_if (,tv != 0) then . ,body)))))))
++|#
+ 
+-#|
++;;; New version of IF
++(defconstruct if (condexpr then &body body)
+ 
+-;;; New version of IF, in progress
++  (let (thenpart elsepart)
+ 
+-(defconstruct if (condexpr then &body body)
+-  ;; Some special things to worry about:
+-  ;; ! && || >= <= > <
++    ;; extract then and else parts from body
++    (cond ((member 'else body)
++           (setq thenpart (subseq body 0 (position 'else body)))
++           (setq elsepart (subseq body (1+ (position 'else body)))) )
++          
++          (t
++           (setq thenpart body)
++           (setq elsepart nil) ))
++    
++    ;; break down the conditional expression
+   (cond
+-   ;; If condition expression is literal zero, just execute the
+-   ;; ELSE part (if any).
+-   ((zerop condexpr)
+-    (if (member 'else body)
+-	(subseq body (1+ (position 'else body)))))
+-
+-   ;; Literal number (other than zero): Execute THEN part only.
+-   ((numberp condexpr)
+-    (if (member 'else body)
+-	(subseq body 0 (position 'else body))
+-      body))
+-
+-   ;; Variable: Compare it to zero, dude!
+-   ((variable? condexpr)
+-    `(if (,condexpr != 0) then ,body))
++          ;; If expression is literal zero, execute the ELSE part only (if any).
++          ((and (= (length condexpr) 1)
++               (numberp (first condexpr))
++               (zerop (first condexpr)))
++           elsepart)
++
++          ;; If expression is literal number (other than zero), execute THEN part only.
++          ((and (= (length condexpr) 1)
++                (numberp (first condexpr)))
++           thenpart)
++
++          ;; If expression is single variable, compare it to zero.
++          ((and (= (length condexpr) 1)
++                (variable? (car condexpr)))
++           `(if (,(car condexpr) != 0) then . ,body) )
+ 
+-   ;; Logical negation: A separate construct handles this.
++          ;; If expression is logical negation, test for equality with zero.
+    ((ifmatch condexpr (! expr)
+-       `(ifnot ,expr . ,body)))
++           `(if (,expr = 0) then . ,body) ))
+ 
+-   ;; Various binary operations/relations:
++          ;; Handle binary operations and relations:
+    ((ifmatch condexpr (exp1 ~ exp2)
++             
+        (cond
+-	;; Shortcutting AND is easy: Nested IFs.
++                 ;; Shortcut AND expression by nesting IFs.
+ 	((eq ~ '&&)
+ 	 `(if ,exp1 then (if ,exp2 then . ,body)))
+ 
+ 	;; Shortcutting OR efficiently is a little more tricky.
++                 ;; NOTE: This method is not very efficient. If the expression
++                 ;; on the left of the OR is true, the expression on the right is
++                 ;; not evaluated, which maintains the proper semantics. However,
++                 ;; the code in the then part is reproduced in the output twice.
+ 	((eq ~ '||)
+-	 (let ((tv (gentemp))
+-	       (bi (gentemp "_IF_OR_BEFORE_IN"))
+-	       (bo (gentemp "_IF_OR_BEFORE_OUT"))
++                  `(if ,exp1 then
++                     ,thenpart
++                   else 
++                     (if ,exp2 then
++                       ,thenpart
++                     else
++                       ,elsepart
++                     )
++                   )
++                  )
++                  
++                  #| other attempts at implementing OR that don't quite work
++                  `(let (tmpif <- 0)
++                     (if ,exp1 then
++                       (tmpif += 1)
++                     else
++                       (if ,exp2 then
++                         (tmpif += 1) )
++                     )
++                     (if (tmpif) then
++                       ,thenpart
++                     else
++                       ,elsepart
++                     )
++                     (if (tmpif) then
++                       (tmpif -= 1) )
++                   )
++                  )
++                  
++                  (let ((bi (gentemp "_IF_OR_BIN"))
++                        (bo (gentemp "_IF_OR_BOUT")) )
++                    `((if ,exp1 then
++                        (go to ,bi from ,bo))
++                      (if ,exp2 then
++                        (if ,exp1 then
++                          (come from ,bo to ,bi))
++                        ,.body)) ))
++                     
++                    (tv (gentemp))
+ 	       (ai (gentemp "_IF_OR_AFTER_IN"))
+-	       (ao (gentemp "_IF_OR_AFTER_OUT")))
++                    (ao (gentemp "_IF_OR_AFTER_OUT"))
+ 	   `(with (,tv <- ,exp1)
+ 		  (if ,tv then (go to ,bi from ,bo))
+ 		  (if ,exp2 then
+ 		      (if ,tv then (come from ,bo to ,bi))
+-		      ,@body
++                         ,.body
+ 		      (if ,tv then (go to ,ao from ,ai)))
+ 		  (if ,tv then (come from ,ai to ,ao)))))
++                    |#
++            
+ 
++                 ;; Relation where second expression is not literal zero,
++                 ;; rearrage expression to create comparison with zero.
+ 	((and (member ~ '(>= <= > <))
+-	      (not (zerop exp2)))
++                       (not (and (numberp exp2)
++                                 (zerop exp2) )))
+ 	 `(if ((,exp1 - ,exp2) ,~ 0) then . ,body))
+-	(t `(if (,exp1 != 0) then . ,body))
+ 
++                 ;; Relational or equality operation can't be broken down further,
++                 ;; transform to middle-level contructs
++                 ((member ~ '(= != >= <= > <))
++                  (if (null elsepart)
++                    `(_if ,condexpr then . ,body)
++                    `(_ifelse ,condexpr ,thenpart ,elsepart) ))
+ 	     
++                 ;(t `(if (,exp1 != 0) then . ,body))
++          )))
+   )
+-|#
++  )
++)
++
+ 
+ ;; for VAR = START to END
+ ;;    BODY...
+@@ -167,10 +233,10 @@
+     (extract form env))))
+ 
+ (defconstruct go (to label1 from label2)
+-  `(sbra label2 label1))
++  `(sbra ,label2 ,label1))
+ 
+ (defconstruct come (from label1 to label2)
+-  `(sbra label2 label1))
++  `(sbra ,label2 ,label1))
+ 
+ ;;;----------------------------------------------------------------------
+ ;;; Medium-level control flow constructs not intended
+@@ -214,12 +280,19 @@
+   (let ((iftop (gentemp "_IFTOP"))
+ 	(ifbot (gentemp "_IFBOT"))
+ 	(elsetop (gentemp "_ELSETOP"))
+-	(elsetop (gentemp "_ELSEBOT")))
++        (elsebot (gentemp "_ELSEBOT")))
++    #|
+     `((bcs-branch (,exp1 ,(opposite ~) ,exp2) ,iftop ,elsetop)
+       (ensure-green . ,ifstuff)
+       (sbra ,ifbot ,elsebot)
+       (sbra ,elsetop ,iftop)
+       (ensure-green . ,elsestuff)
+       (bcs-branch (,exp1 ,~ ,exp2) ,elsebot ,ifbot))
+-    ))
++    |#
++    `((twin-bcs-branch (,exp1 ,(opposite ~) ,exp2) ,iftop ,ifbot
++       ,.ifstuff)
++      (twin-bcs-branch (,exp1 ,~ ,exp2) ,elsetop ,elsebot
++       ,.elsestuff))
++  )
++)
+       
+diff -ruw '--exclude=README.*' src/environment.lisp src2/environment.lisp
+--- src/environment.lisp	1997-07-21 10:19:34.000000000 -0600
++++ src2/environment.lisp	2018-09-20 20:44:40.200048600 -0600
+@@ -36,6 +36,13 @@
+     :initarg :staticarrays
+     :accessor staticarrays
+     :documentation "A list of identifier symbols denoting static arrays.")
++   (string-identifiers
++    :type list
++    :initform nil
++    :initarg :strings
++    :accessor strings
++    :documentation "An alist of identifier symbols denoting strings (char arrays).
++       and their lengths in the form ((<var1> . <length>) ...).")
+    )
+   (:documentation "An environment specifies the meanings of identifiers at
+      a given point during the compilation of a program."))
+@@ -49,12 +56,14 @@
+ (defun copy-environment (env)
+   (make-environment :locmap (copy-alist (locmap env))
+ 		    :staticvals (copy-list (staticvals env))
+-		    :staticarrays (copy-list (staticarrays env))))
++                    :staticarrays (copy-list (staticarrays env))
++                    :strings (copy-alist (strings env)) ))
+ 
+ (defmethod env-to-list ((env environment))
+   `(:locmap ,(locmap env)
+     :staticvals ,(staticvals env)
+-    :staticarrays ,(staticarrays env)))
++    :staticarrays ,(staticarrays env)
++    :strings ,(strings env) ))
+ 
+ (defmethod print-object ((env environment) stream)
+   (write (env-to-list env) :stream stream))
+@@ -172,6 +181,21 @@
+ 	(staticarrays env) (cons name (staticarrays env)))
+   env)
+ 
++(defmethod add-string (name length (env environment))
++  (setf env (copy-environment env)
++	(strings env) (cons `(,name ,length) (strings env)))
++
++  (setf env (copy-environment env)
++	(staticarrays env) (cons name (staticarrays env)))
++  
++  env)
++
++(defmethod string? (var (env environment))
++  (assoc var (strings env)))
++
++(defmethod get-string-length (var (env environment))
++  (cadr (assoc var (strings env))))
++
+ (defmethod static-id? (obj (env environment))
+   (and (symbolp obj)
+        (or (member obj (staticvals env))
+diff -ruw '--exclude=README.*' src/files.lisp src2/files.lisp
+--- src/files.lisp	2001-08-04 21:10:36.000000000 -0600
++++ src2/files.lisp	2018-09-20 20:45:45.876909000 -0600
+@@ -1,23 +1,73 @@
+ ;;; -*- Package: user -*-
+ (in-package "USER")
+ 
+-;;;----------------------------------------------------------------------
+-;;; File compilation code.
+-
++;;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
++;; Read R code from input file and writes PISA code to output file
++;;:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+ (defun rcompile-file (filename &key debug)
+-  (let (source)
+-    (with-open-file (stream filename)
++  (let (source ctime upal pal env ofile)
++    
++    ;read R source code and print to screen
++    (with-open-file (istream filename)
+        (loop
+-	(let ((next-form
+-	       (read stream nil :eof)))
++        (let ( (next-form (read istream nil :eof)) )
+ 	  (cond
+ 	   ((eq next-form :eof)
+ 	    (setf source (reverse source))
+ 	    (return))
++           
+ 	   (t
+ 	    (push next-form source))))))
+-    ;(format t "~&Source:~%")
+-    ;(myprint source)
+-    (if debug
++    
++    (format t "~%R Source Code:")
++    (myprint source t)
++    
++
++    ;compile R code and print output to screen
++    (setq ctime (get-internal-run-time))
++    
++    (setq upal (if debug
+ 	(rc source :debug t)
+-      (rc source))))
++                   (rc source)) )
++    
++    (setq ctime (- (get-internal-run-time) ctime))
++    (setq ctime (/ ctime internal-time-units-per-second))
++    (format t "~%Compile Time: ~s seconds~%" ctime)       
++    
++    (setq env (last upal))
++    (setq upal (cdr (nbutlast upal 1)))
++
++    (format t "~%PAL Code:~%")
++    (myprint upal t)
++    (format t "~%Final environment:~%")
++    (print env)
++    
++    ;write unoptimized PAL code to .upal file in same directory as R input file
++    (setq ofile (make-pathname :host (pathname-host filename)
++                               :device (pathname-device filename)
++                               :directory (pathname-directory filename)
++                               :name (pathname-name filename)
++                               :type "upal") )
++      
++    (with-open-file (ostream ofile :direction :output)
++      (myprint upal ostream) )
++      
++      
++    ;optimize PAL code and print output to screen
++    (setq pal (peephole upal))
++    
++    (format t "~%Optimized PAL Code:~%")
++    (myprint pal t)
++    
++    ;write optimized PAL code to .pal file in same directory as R input file
++    (setq ofile (make-pathname :host (pathname-host filename)
++                               :device (pathname-device filename)
++                               :directory (pathname-directory filename)
++                               :name (pathname-name filename)
++                               :type "pal") )
++      
++    (with-open-file (ostream ofile :direction :output)
++      (myprint pal ostream) )
++    
++  )
++)
+diff -ruw '--exclude=README.*' src/infrastructure.lisp src2/infrastructure.lisp
+--- src/infrastructure.lisp	2018-09-18 18:28:32.589643600 -0600
++++ src2/infrastructure.lisp	2018-09-20 20:46:38.502518400 -0600
+@@ -218,88 +218,102 @@
+   (loop
+    (block myblock
+ 	  (when debug
+-	    (myprint (cdr whole)
+-		     (if (eq (caadr pointer) 'env)
++	  (myprint (cdr whole))
++             #|  (if (eq (caadr pointer) 'env)
+ 			 (cddr pointer)
+-		       (cdr pointer)))	;Print thuh whole shebang.
++                 (cdr pointer))) |#	;Print thuh whole shebang.
+ 	    (format t "~&---------------------------------------------------------------------- ")
+ 	    ;; (clear-input) (finish-output) ;These don't seem to work right.
+ 	    ;; (read-line)
+ 	    )
+ 	  (let ((source (cdr pointer))	;Remaining source to compile.
+ 		startenv)
++        
+ 	    (if (and (listp source)	;List of statements.
+ 		     (listp (car source)) ;Non-label statement.
+ 		     (eq (caar source) 'env)) ;Special (ENV <env>) statement.
+-		(setf startenv (cadar source)) ;Get the <env>.
++          (setf startenv (cadar source))  ;Get the <env>
+ 	      (progn 
+ 		;; Invent an ENV statement and insert it.
+ 		(if debug (format t "~&Default environment.~%"))
+ 		(setf startenv (empty-env))
+ 		(setf (cdr pointer)	;Alter our object as follows.
+-		      `((env ,startenv)
+-			. ,source))
+-		(if debug (myprint (cdr whole) (cddr pointer)))
+-		))
++                  `((env ,startenv) . ,source) )
++            (if debug (myprint (cdr whole)) ) ;(cddr pointer)))
++          )
++        )
++        
+ 	    ;; Now STARTENV is the current env, and current source obj is just
+ 	    ;; after the initial env statement.
+ 	    (setf source (cddr pointer))
++        
+ 	    ;; If no statements left to compile, we're done.
+ 	    (when (null source)
+ 	      (return-from rcomp-repl whole))
++        
+ 	    (let ((form (car source)))
+ 	      ;; From here on we approximately mirror structure of RCOMP.
++          
+ 	      ;; If first form is an infix form, canonicalize it.
+ 	      (when (infix-form? form)
+-					;(format t "~&Canonicalize.~%")
+-		(setf form (canonicalize-form form)
+-		      (car source) form)
++            (if debug (format t "~%Canonicalizing: ~s~%" form))
++            (setf form (canonicalize-form form) (car source) form)
++            (if debug (format t "canonicalized form: ~s~%" form))
+ 					;(myprint (cdr whole))
+ 		)
+-	      (cond
+-	       ;; If first item is label: do nothing with it.
+-	       ((atom form)
++          
++          ;; If first item is label, do nothing with it.
++          (when (atom form)
+ 		(if debug (format t "~&Label.~%"))
+-		(setf (cdr pointer) `(,form
++            (setf (cdr pointer)
++                  `(,form
+ 				      (env ,startenv)
+ 				      . ,(cdr source)))
+ 		(setf pointer (cdr pointer))
+ 		(return-from myblock))
+-	       (t;; Else first item is a non-label STATEMENT.
+-		(let ((first (first form)))
+-		  (if (symbolp first)
++          
++          ;; Otherwise, first item is a non-label STATEMENT.
++          (let ((first (first form))
++                def)
++            
++            (cond
++             ((symbolp first)
+ 		      ;; Assume source code is a single statement, FIRST is the symbol
+ 		      ;; naming the statement type, for dispatching.
+-		      (if (eq first 'env)
+-			  (progn
++               
++              (setq def (definition first))  ;get construct definition
++                
++              (when (eq first 'env)
+ 			    (if debug (format t "~&Environment override.~%"))
+ 			    (setf (cdr pointer) source)
+ 			    (return-from myblock))
+-			(let ((def (definition first)))
+-			  (if (eq first 'defsub)
++
++              (when (eq first 'defsub)
+ 			      (format t "~&Compiling ~s...~%" (second form)))
++
+ 			  (when (member first *annotate*)
+ 			    ;; Annote the compiler output with the source statement.
+ 			    (setf (cdr pointer)
+ 				  `((source ,form)
+ 				    . ,(cdr pointer)))
+-			    (setf pointer (cdr pointer))
+-			    )
+-			  (if (null def)
+-			      ;; No definition for this.  Assume it's a final
+-			      ;; assembly instruction and doesn't change the
+-			      ;; environment.
+-			      (progn
++                (setf pointer (cdr pointer)) )
++              
++              (when (null def)
++                ;; No definition for this statement.  Assume it's a final
++                ;; assembly instruction and doesn't change the environment.
+ 				(if debug (format t "~&Final.~%"))
+-				(setf (cdr pointer) `(,form
++                (setf (cdr pointer)
++                  `(,form
+ 						      (env ,startenv)
+ 						      . ,(cdr source)))
+ 				(setf pointer (cdr pointer))
+ 				(return-from myblock))
+-			    ;; OK, we do have a definition for it.
++              
++              ;; There is a definition for the statement
+ 			    (mvbind (compiled endenv)
+ 				    ;; Call the transformer function.
+ 				    (funcall def (cdr form) startenv)
++                      
+ 				    ;; Insert result.
+ 				    (if debug (format t "~&Expand ~s.~%" first))
+ 				    (if (and endenv (null compiled))
+@@ -314,20 +328,25 @@
+ 							  compiled))
+ 						    (env ,endenv)
+ 						    . ,(cdr source))
++  
+ 					      `(,@(if compiled
+ 						      (if (not (form-list? compiled))
+ 							  (list compiled)
+ 							compiled))
+ 						  . ,(cdr source)))))
++                      
+ 				    ;; Try compiling same thing again.
+-				    (return-from myblock)))))
++                (return-from myblock) ))
++             
+ 		    ;; The first item isn't a symbol so assume it's a statement
+ 		    ;; and treat the form as a list of statements.
+-		    (progn
+-		      (setf source (append form (cdr source))
++             (t
++              (setf source
++                    (append form (cdr source))
+ 			    (cddr pointer) source)
+ 		      (if debug (format t "~&Insert statement list.~%"))
+-		      (return-from myblock)))))))))))
++              (return-from myblock) )))))))
++)
+ 
+ ;; RCOMP-ITERATIVE
+ (defun rcomp-iterative (source &key debug)
+@@ -356,50 +375,59 @@
+ 	(values (list source) env)
+       (funcall def (cdr source) env))))
+ 
++
+ ;; For testing.
+-(defun myprint (code &optional pointer)
+-  (if (not (listp code))
+-    (print code)
+-  (progn
+-  #|(format t "~&~@
+-             --------~@
+-             Program:~@
+-             --------~%")|#
+-  (format t "~&~%")
+-  (if (list (car code))
++;(defun myprint (code &optional pointer)
++(defun myprint (code &optional (ostream t))
++  
++  (cond ((not (listp code))
++         (pprint code)
++         (values) ))
++  
++  ;write header for simulator
++  (if (not (eq ostream t))
++      (format ostream "~&;; pendulum pal file~%") )
++  
++  (format ostream "~%")
++
+       (dolist (s code)
+-	(if (eq s (car pointer)) (format t "==>"))
+ 	(cond
+-	 ((atom s) ;Interpret atoms as labels.
+-	  (format t "~s:~15T" s))
++       ;Interpret atoms as labels
++       ((atom s)  
++        (format ostream "~s:~15T" s) )
++     
++       ;Print source code as comment if included
+ 	 ((and (symbolp (car s))
+ 	       (eq (car s) 'source))
+-	  (format t "~32T;;; ~w~%" (cadr s)))
++        (format ostream "~32T;;; ~w~%" (cadr s)) )
++
++       ;Print regular instructions
+ 	 ((and (symbolp (car s))
+ 	       (not (get (car s) 'construct-definition))
+ 	       (not (eq (car s) 'env))
+ 	       (not (and (symbolp (cadr s))
+ 			 (get (cadr s) 'construct-definition))))
+-	  (format t "~16T")
++        (format ostream "~16T")
+ 	  (dolist (w s)
+ 	    (if (register? w)
+-		(format t "$~s " (cadr w))
+-	      (format t "~:w " w)))
+-	  (format t "~%"))
++              (format ostream "$~s " (cadr w))
++              (format ostream "~:w " w) ))
++        (format ostream "~%") )
++
+ 	 (t
+-	  (format t "~16T~<~:W~:>~%" s))))
+-    (pprint code))
+-  (format t "~&~%")
+-  (values)
+-  )))
++        (format ostream "~16T~<~:W~:>~%" s) )))
++
++  (format ostream "~&~%")
++)
++
+ 
+ (defun rc (source &key debug env) ;; ENV is currently ignored.
+   (mvbind (prog newenv)
+ 	  (if debug
+-	      (rcd source)
+-	    (rcomp-iterative source :debug debug))
+-	  (myprint prog)
+-	  (format t "~&~%Final environment:")
+-	  (print newenv))
+-  (values))
++      (rcomp-iterative source :debug t)
++      (rcomp-iterative source) )
++
++    (values prog)
++  )
++)
+ 
+diff -ruw '--exclude=README.*' src/library.lisp src2/library.lisp
+--- src/library.lisp	1997-07-29 12:50:24.000000000 -0600
++++ src2/library.lisp	2018-09-20 20:47:22.052352500 -0600
+@@ -37,7 +37,7 @@
+ 	  (for position = 1 to 31
+ 	     (mask >=> 1)
+ 	     (with (bit <- (m1p & mask))
+-		(if bit then
++		(if (bit) then
+ 		  (with (shifted <- (m2p >> position))
+ 		     (p += shifted)))))
+ 	  (if (m1 < 0) then (- p))
+diff -ruw '--exclude=README.*' src/loader.lisp src2/loader.lisp
+--- src/loader.lisp	2018-09-18 20:12:37.767835700 -0600
++++ src2/loader.lisp	2018-09-20 20:48:10.885845700 -0600
+@@ -23,7 +23,10 @@
+ (load "library.lisp")         ; Standard library of R routines.
+ (load "files.lisp")           ; File compiler.
+ 
+-(load "../test/test.lisp")            ; Example programs.
++(load "strings.lisp")         ; String functions
++(load "optimize.lisp")        ; Compiler optimization functions
++
++(load "test.lisp")            ; Example programs.
+ 
+ ;; Command to reload the system.
+ (defun l () (load "loader.lisp"))           
+Only in src2: loader-compiled.lisp
+Only in src2: optimize.lisp
+diff -ruw '--exclude=README.*' src/print.lisp src2/print.lisp
+--- src/print.lisp	1997-06-26 12:45:48.000000000 -0600
++++ src2/print.lisp	2018-09-20 20:50:23.345264000 -0600
+@@ -1,12 +1,100 @@
+ ;;; -*- Package: user -*-
+ (in-package "USER")
+ 
++;;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
++;; I/O type specifiers
++;; The high-order byte specifies the data type and
++;; the low order byte specifies options.
++;; Options are chosen by adding their values to
++;; the value of the base type.
++;; For example, to output and int as an unsigned hex number:
++;;   (rawprint num (+ ptype-int int-unsigned int-base-16))
++;;::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
++
++;;---------------------------------
++;; Integer type
++;; Default: signed base 10
++;;---------------------------------
++(defconstant ptype-int    #x0000)
++
++;sign representation
++(defconstant int-signed     #x00)
++(defconstant int-unsigned   #x01)
++
++;base representation
++(defconstant int-base-10    #x00)
++(defconstant int-base-16    #x10)
++
++
++;;-----------------------------------------
++;; String type
++;; Default: little endian
++;;-----------------------------------------
++(defconstant ptype-string         #x0100)
++
++;byte-order representation
++(defconstant string-little-endian   #x00)
++(defconstant string-big-endian      #x01)
++
++
++;;-----------------------------------------
++;; Floating-point type
++;; Default: fixed point notation
++;;-----------------------------------------
++(defconstant ptype-float   #x0200)
++
++;notation representation
++(defconstant float-fixed     #x00)
++(defconstant float-exp       #x01)
++
++
++;;----------------------------------
++;; New line indicator
++;;----------------------------------
++(defconstant ptype-newline #xFF00)
++
++
++
++(defconstruct print (val &key sign base)
++  (cond
++   ((or (static-val? val env)
++        (numberp val) )
++    (let ((type ptype-int))
++      (if (eq sign 'unsigned)
++        (setq type (+ type int-unsigned)) )
++      (if (eq base 16)
++        (setq type (+ type int-base-16)) )
++    
++    `((rawprint ,type)
++      (rawprint ,val)) ))
++   
++   
++   ((string? val env)
++    (let (ptr)
++      (dotimes (i (ceiling (get-string-length val env) 4))
++        (setq ptr (append ptr (list i))) )
++      
++      `((rawprint ,ptype-string)
++        ,(mapcar #'(lambda (p) `(rawprint (,val _ ,p))) ptr)) ))
++   
++   
++   ((stringp val)
++    `((rawprint ,ptype-string)
++      ,(mapcar #'(lambda (word) `(rawprint ,word)) (pack-bytes (toascii val (length val))))) ) )
++)
++
++
++(defconstruct println (&optional (val nil))
++  (if (null val)
++    `((rawprint ,ptype-newline))
++    `((print ,val) (rawprint ,ptype-newline)) )
++)
++
++
+ (defconstruct printword (val)
+-  `((rawprint 0)
++  `((rawprint ,ptype-int)
+     (rawprint ,val)))
+ 
+-(defconstruct println ()
+-  `((rawprint 1)))
+ 
+ (defconstruct rawprint (val)
+   (cond
+@@ -15,3 +103,8 @@
+    (t
+     (extract form env))))
+ 
++
++;(defconstruct println ()
++;  `((rawprint 1)) )
++
++
+diff -ruw '--exclude=README.*' src/program.lisp src2/program.lisp
+--- src/program.lisp	1997-06-26 14:54:12.000000000 -0600
++++ src2/program.lisp	2018-09-20 20:51:03.720311200 -0600
+@@ -6,7 +6,7 @@
+ 
+ (defconstruct defmain (progname &body body)
+   `(;; Always include the standard library of subroutines.
+-    (standard-library)
++    ;(standard-library)
+     ;; We surround the whole program with a branch pair because I don't
+     ;; think that our current idea of START/FINISH boundary instructions
+     ;; can be non-noops on the real machine without dissipation. This
+Only in src2: strings.lisp
+Only in src2: test.lisp
