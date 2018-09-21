@@ -218,11 +218,18 @@ out in the [`src3/`](src3 "src3/ subdirectory") subdirectory, which is initially
 
 This directory contains various files intended for purposes of testing/exercising the compiler.
 
-### 3.6. README file ([`README.md`](README.md "README.md file")).
+### 3.6.  Top-level files:
+
+#### 3.6.1.  [`COMPARE.txt`](COMPARE.txt "COMPARE.txt file") file.
+
+This file summarizes a side-by-side comparison of the original (`src/`) and 
+improved (`src2/`) versions of the *Rcomp* compiler.
+
+#### 3.6.2.  README file ([`README.md`](README.md "README.md file")).
 
 This file, written in GitHub-flavored Markdown syntax.
 
-### 3.7.  To-Do file ([`TO-DO.txt`](TO-DO.txt "To-Do text file")).
+#### 3.6.3.  To-Do file ([`TO-DO.txt`](TO-DO.txt "To-Do text file")).
 
 Notes on things to do with this repository.
 

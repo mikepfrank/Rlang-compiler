@@ -3,27 +3,27 @@ COMPARE.txt
 
 Comparison of src/ and src2/ directory contents:
 
-						 src/	 src2/	Summary			Details
-						------	------	---------		-------
-branches.lisp			10,272	10,272	Identical		-
-clike.lisp		 		 5,324	 5,314	-10				Whitespace changes only.
-controlflow.lisp		 7,310  10,534	+3,224			Added support for ELSE clauses, conditional expressions.
-environment.lisp		 7,974	 8,742	+768			Added support for strings.
-expression.lisp			 9,262	 9,262	Identical		-
-files.lisp				   545	 2,448	+1,903			Writes unoptimized and optimized assembly to PAL files.
-infrastructure.lisp		14,630	16,178	+1,548			Extensive changes; needs closer examination.
-library.lisp			 1,586	 1,588	+2				Wrap parens around 'if' condition.
-loader.lisp				 1,474	 1,558	+81				Added loads of 'strings' and 'optimize' modules.
-loader-compiled.lisp			 1,663	New				-
-location.lisp			 1,338	 1,338	Identical		-
-optimize.lisp					10,543	New				-
-print.lisp				   272	 2,636	+2,364			Added support for printing of multiple data types.
-program.lisp			 1,934	 1,935	+1				Commented out "(standard-library)".
-regstack.lisp			 3,259	 3,259	Identical		-
-staticdata.lisp			 1,175	 1,175	Identical		-
-strings.lisp					 2,450	New				-
-subroutines.lisp		 4,900	 4,900	Identical		-
-test.lisp				13,053	13,029	-24				Relative pathname changes only.
-util.lisp				 2,467	 2,467	Identical		-
-variables.lisp			 8,656	 8,656	Identical		-
+                         src/    src2/  Summary         Details
+                        ------  ------  ---------       -------
+branches.lisp           10,272  10,272  Identical       -
+clike.lisp               5,324   5,314  -10             Whitespace changes only.
+controlflow.lisp         7,310  10,534  +3,224          Added support for ELSE clauses, conditional expressions.
+environment.lisp         7,974   8,742  +768            Added support for strings.
+expression.lisp          9,262   9,262  Identical       -
+files.lisp                 545   2,448  +1,903          Writes unoptimized and optimized assembly to PAL files.
+infrastructure.lisp     14,630  16,178  +1,548          Extensive changes; needs closer examination.
+library.lisp             1,586   1,588  +2              Wrap parens around 'if' condition.
+loader.lisp              1,474   1,558  +81             Added loads of 'strings' and 'optimize' modules.
+loader-compiled.lisp             1,663  New             -
+location.lisp            1,338   1,338  Identical       -
+optimize.lisp                   10,543  New             -
+print.lisp                 272   2,636  +2,364          Added support for printing of multiple data types.
+program.lisp             1,934   1,935  +1              Commented out "(standard-library)".
+regstack.lisp            3,259   3,259  Identical       -
+staticdata.lisp          1,175   1,175  Identical       -
+strings.lisp                     2,450  New             -
+subroutines.lisp         4,900   4,900  Identical       -
+test.lisp               13,053  13,029  -24             Relative pathname changes only.
+util.lisp                2,467   2,467  Identical       -
+variables.lisp           8,656   8,656  Identical       -
 
