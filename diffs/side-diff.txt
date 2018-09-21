@@ -1,4 +1,4 @@
-diff -ryw '--width=260' '--exclude=README.*' src/branches.lisp src2/branches.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/branches.lisp ../src2/branches.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;;----------------------------------------------------------------------							;;;----------------------------------------------------------------------
@@ -241,7 +241,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/branches.lisp src2/branches.lis
     ;; We have to subtract & compare with zero instead.										    ;; We have to subtract & compare with zero instead.
     (error "Can't RBC-BRANCH with ~s operator.~&" ~)										    (error "Can't RBC-BRANCH with ~s operator.~&" ~)
     )))																    )))
-diff -ryw '--width=260' '--exclude=README.*' src/clike.lisp src2/clike.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/clike.lisp ../src2/clike.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -434,7 +434,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/clike.lisp src2/clike.lisp
 
 (defun << (a b)															(defun << (a b)
   (ash a b))															  (ash a b))
-diff -ryw '--width=260' '--exclude=README.*' src/controlflow.lisp src2/controlflow.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/controlflow.lisp ../src2/controlflow.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -734,7 +734,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/controlflow.lisp src2/controlfl
 															      >	  )
 															      >	)
       																      
-diff -ryw '--width=260' '--exclude=README.*' src/environment.lisp src2/environment.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/environment.lisp ../src2/environment.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;; ======================================================================							;;; ======================================================================
@@ -971,7 +971,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/environment.lisp src2/environme
   (and (listp obj)														  (and (listp obj)
        (eq (car obj) '&)													       (eq (car obj) '&)
        (null (cddr obj))													       (null (cddr obj))
-       (static-val? (second obj) env)))												       (static-val? (second obj) env)))diff -ryw '--width=260' '--exclude=README.*' src/expression.lisp src2/expression.lisp
+       (static-val? (second obj) env)))												       (static-val? (second obj) env)))diff -ryw '--width=260' '--exclude=README.*' ../src/expression.lisp ../src2/expression.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -1257,7 +1257,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/environment.lisp src2/environme
 		  1))																  1))
       (if found? form))))		;End function EXTRACT.									      (if found? form))))		;End function EXTRACT.
 
-diff -ryw '--width=260' '--exclude=README.*' src/files.lisp src2/files.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/files.lisp ../src2/files.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -1332,7 +1332,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/files.lisp src2/files.lisp
 															      >	    
 															      >	  )
 															      >	)
-diff -ryw '--width=260' '--exclude=README.*' src/infrastructure.lisp src2/infrastructure.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/infrastructure.lisp ../src2/infrastructure.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;;----------------------------------------------------------------------							;;;----------------------------------------------------------------------
@@ -1769,7 +1769,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/infrastructure.lisp src2/infras
 	  (print newenv))												      |	  )
   (values))														      |	)
 
-diff -ryw '--width=260' '--exclude=README.*' src/library.lisp src2/library.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/library.lisp ../src2/library.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -1816,7 +1816,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/library.lisp src2/library.lisp
 	  (if (m2 < 0) then (- p))													  (if (m2 < 0) then (- p))
 	  (prod += p)))))														  (prod += p)))))
 
-diff -ryw '--width=260' '--exclude=README.*' src/loader.lisp src2/loader.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/loader.lisp ../src2/loader.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -1849,8 +1849,8 @@ diff -ryw '--width=260' '--exclude=README.*' src/loader.lisp src2/loader.lisp
 
 ;; Command to reload the system.												;; Command to reload the system.
 (defun l () (load "loader.lisp"))           											(defun l () (load "loader.lisp"))			
-Only in src2: loader-compiled.lisp
-diff -ryw '--width=260' '--exclude=README.*' src/location.lisp src2/location.lisp
+Only in ../src2: loader-compiled.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/location.lisp ../src2/location.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;; ---------------------------------------------------------------------							;;; ---------------------------------------------------------------------
@@ -1886,8 +1886,8 @@ diff -ryw '--width=260' '--exclude=README.*' src/location.lisp src2/location.lis
 
 (defun location? (obj)														(defun location? (obj)
   (or (register? obj) (stackloc? obj)))												  (or (register? obj) (stackloc? obj)))
-Only in src2: optimize.lisp
-diff -ryw '--width=260' '--exclude=README.*' src/print.lisp src2/print.lisp
+Only in ../src2: optimize.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/print.lisp ../src2/print.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -2000,7 +2000,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/print.lisp src2/print.lisp
 															      >	;  `((rawprint 1)) )
 															      >
 
-diff -ryw '--width=260' '--exclude=README.*' src/program.lisp src2/program.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/program.lisp ../src2/program.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -2050,7 +2050,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/program.lisp src2/program.lisp
 
 (defconstruct declare-startpoint (labname)											(defconstruct declare-startpoint (labname)
   `(.start ,labname))														  `(.start ,labname))
-diff -ryw '--width=260' '--exclude=README.*' src/regstack.lisp src2/regstack.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/regstack.lisp ../src2/regstack.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -2144,7 +2144,10 @@ diff -ryw '--width=260' '--exclude=README.*' src/regstack.lisp src2/regstack.lis
 (defconstruct movereg (r1 r2)													(defconstruct movereg (r1 r2)
   `((,r2 ^= ,r1)														  `((,r2 ^= ,r1)
     (,r1 ^= ,r2)))														    (,r1 ^= ,r2)))
-diff -ryw '--width=260' '--exclude=README.*' src/staticdata.lisp src2/staticdata.lisp
+Only in ../src2: sch.pal
+Only in ../src2: sch.r
+Only in ../src2: sch.upal
+diff -ryw '--width=260' '--exclude=README.*' ../src/staticdata.lisp ../src2/staticdata.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -2184,8 +2187,8 @@ diff -ryw '--width=260' '--exclude=README.*' src/staticdata.lisp src2/staticdata
   ;; Implemented by an unconditional branch pair around the body.								  ;; Implemented by an unconditional branch pair around the body.
   `(sbra-pair ,(gentemp "_PRESKIP") ,(gentemp "_POSTSKIP")									  `(sbra-pair ,(gentemp "_PRESKIP") ,(gentemp "_POSTSKIP")
 	     . ,body))															     . ,body))
-Only in src2: strings.lisp
-diff -ryw '--width=260' '--exclude=README.*' src/subroutines.lisp src2/subroutines.lisp
+Only in ../src2: strings.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/subroutines.lisp ../src2/subroutines.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 
@@ -2327,8 +2330,8 @@ diff -ryw '--width=260' '--exclude=README.*' src/subroutines.lisp src2/subroutin
       `(reg ,(+ argno 2))													      `(reg ,(+ argno 2))
     `(stack ,(- 29 argno))))													    `(stack ,(- 29 argno))))
 
-Only in src2: test.lisp
-diff -ryw '--width=260' '--exclude=README.*' src/util.lisp src2/util.lisp
+Only in ../src2: test.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/util.lisp ../src2/util.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;;----------------------------------------------------------------------							;;;----------------------------------------------------------------------
@@ -2399,7 +2402,7 @@ diff -ryw '--width=260' '--exclude=README.*' src/util.lisp src2/util.lisp
 		  (cons (car list) (helper (cdr list) (1+ index) func)))))))									  (cons (car list) (helper (cdr list) (1+ index) func)))))))
     (helper list firstindex func)))												    (helper list firstindex func)))
 
-diff -ryw '--width=260' '--exclude=README.*' src/variables.lisp src2/variables.lisp
+diff -ryw '--width=260' '--exclude=README.*' ../src/variables.lisp ../src2/variables.lisp
 ;;; -*- Package: user -*-													;;; -*- Package: user -*-
 (in-package "USER")														(in-package "USER")
 ;;; ----------------------------------------------------------------------							;;; ----------------------------------------------------------------------

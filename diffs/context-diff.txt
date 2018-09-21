@@ -1,6 +1,6 @@
-diff -rcw '--exclude=README.*' src/clike.lisp src2/clike.lisp
-*** src/clike.lisp	2001-08-04 19:32:36.000000000 -0600
---- src2/clike.lisp	2018-09-20 20:42:52.394077800 -0600
+diff -rcw '--exclude=README.*' ../src/clike.lisp ../src2/clike.lisp
+*** ../src/clike.lisp	2001-08-04 19:32:36.000000000 -0600
+--- ../src2/clike.lisp	2018-09-20 20:42:52.394077800 -0600
 ***************
 *** 70,77 ****
      ((and (register? var) (static-array? val env))
@@ -19,9 +19,9 @@ diff -rcw '--exclude=README.*' src/clike.lisp src2/clike.lisp
      ((and (register? var)
   	 (literal? val env)
   	 (negated-sym? val))
-diff -rcw '--exclude=README.*' src/controlflow.lisp src2/controlflow.lisp
-*** src/controlflow.lisp	2001-08-04 13:27:36.000000000 -0600
---- src2/controlflow.lisp	2018-09-20 20:43:21.081161700 -0600
+diff -rcw '--exclude=README.*' ../src/controlflow.lisp ../src2/controlflow.lisp
+*** ../src/controlflow.lisp	2001-08-04 13:27:36.000000000 -0600
+--- ../src2/controlflow.lisp	2018-09-20 20:43:21.081161700 -0600
 ***************
 *** 18,23 ****
 --- 18,25 ----
@@ -287,9 +287,9 @@ diff -rcw '--exclude=README.*' src/controlflow.lisp src2/controlflow.lisp
 !   )
 ! )
         
-diff -rcw '--exclude=README.*' src/environment.lisp src2/environment.lisp
-*** src/environment.lisp	1997-07-21 10:19:34.000000000 -0600
---- src2/environment.lisp	2018-09-20 20:44:40.200048600 -0600
+diff -rcw '--exclude=README.*' ../src/environment.lisp ../src2/environment.lisp
+*** ../src/environment.lisp	1997-07-21 10:19:34.000000000 -0600
+--- ../src2/environment.lisp	2018-09-20 20:44:40.200048600 -0600
 ***************
 *** 36,41 ****
 --- 36,48 ----
@@ -359,9 +359,9 @@ diff -rcw '--exclude=README.*' src/environment.lisp src2/environment.lisp
   (defmethod static-id? (obj (env environment))
     (and (symbolp obj)
          (or (member obj (staticvals env))
-diff -rcw '--exclude=README.*' src/files.lisp src2/files.lisp
-*** src/files.lisp	2001-08-04 21:10:36.000000000 -0600
---- src2/files.lisp	2018-09-20 20:45:45.876909000 -0600
+diff -rcw '--exclude=README.*' ../src/files.lisp ../src2/files.lisp
+*** ../src/files.lisp	2001-08-04 21:10:36.000000000 -0600
+--- ../src2/files.lisp	2018-09-20 20:45:45.876909000 -0600
 ***************
 *** 1,23 ****
   ;;; -*- Package: user -*-
@@ -461,9 +461,9 @@ diff -rcw '--exclude=README.*' src/files.lisp src2/files.lisp
 !     
 !   )
 ! )
-diff -rcw '--exclude=README.*' src/infrastructure.lisp src2/infrastructure.lisp
-*** src/infrastructure.lisp	2018-09-18 18:28:32.589643600 -0600
---- src2/infrastructure.lisp	2018-09-20 20:46:38.502518400 -0600
+diff -rcw '--exclude=README.*' ../src/infrastructure.lisp ../src2/infrastructure.lisp
+*** ../src/infrastructure.lisp	2018-09-18 18:28:32.589643600 -0600
+--- ../src2/infrastructure.lisp	2018-09-20 20:46:38.502518400 -0600
 ***************
 *** 218,305 ****
     (loop
@@ -817,9 +817,9 @@ diff -rcw '--exclude=README.*' src/infrastructure.lisp src2/infrastructure.lisp
 !   )
 ! )
   
-diff -rcw '--exclude=README.*' src/library.lisp src2/library.lisp
-*** src/library.lisp	1997-07-29 12:50:24.000000000 -0600
---- src2/library.lisp	2018-09-20 20:47:22.052352500 -0600
+diff -rcw '--exclude=README.*' ../src/library.lisp ../src2/library.lisp
+*** ../src/library.lisp	1997-07-29 12:50:24.000000000 -0600
+--- ../src2/library.lisp	2018-09-20 20:47:22.052352500 -0600
 ***************
 *** 37,43 ****
   	  (for position = 1 to 31
@@ -837,9 +837,9 @@ diff -rcw '--exclude=README.*' src/library.lisp src2/library.lisp
   		  (with (shifted <- (m2p >> position))
   		     (p += shifted)))))
   	  (if (m1 < 0) then (- p))
-diff -rcw '--exclude=README.*' src/loader.lisp src2/loader.lisp
-*** src/loader.lisp	2018-09-18 20:12:37.767835700 -0600
---- src2/loader.lisp	2018-09-20 20:48:10.885845700 -0600
+diff -rcw '--exclude=README.*' ../src/loader.lisp ../src2/loader.lisp
+*** ../src/loader.lisp	2018-09-18 20:12:37.767835700 -0600
+--- ../src2/loader.lisp	2018-09-20 20:48:10.885845700 -0600
 ***************
 *** 23,29 ****
   (load "library.lisp")         ; Standard library of R routines.
@@ -860,11 +860,11 @@ diff -rcw '--exclude=README.*' src/loader.lisp src2/loader.lisp
   
   ;; Command to reload the system.
   (defun l () (load "loader.lisp"))			
-Only in src2: loader-compiled.lisp
-Only in src2: optimize.lisp
-diff -rcw '--exclude=README.*' src/print.lisp src2/print.lisp
-*** src/print.lisp	1997-06-26 12:45:48.000000000 -0600
---- src2/print.lisp	2018-09-20 20:50:23.345264000 -0600
+Only in ../src2: loader-compiled.lisp
+Only in ../src2: optimize.lisp
+diff -rcw '--exclude=README.*' ../src/print.lisp ../src2/print.lisp
+*** ../src/print.lisp	1997-06-26 12:45:48.000000000 -0600
+--- ../src2/print.lisp	2018-09-20 20:50:23.345264000 -0600
 ***************
 *** 1,12 ****
   ;;; -*- Package: user -*-
@@ -991,9 +991,9 @@ diff -rcw '--exclude=README.*' src/print.lisp src2/print.lisp
 + ;  `((rawprint 1)) )
 + 
 + 
-diff -rcw '--exclude=README.*' src/program.lisp src2/program.lisp
-*** src/program.lisp	1997-06-26 14:54:12.000000000 -0600
---- src2/program.lisp	2018-09-20 20:51:03.720311200 -0600
+diff -rcw '--exclude=README.*' ../src/program.lisp ../src2/program.lisp
+*** ../src/program.lisp	1997-06-26 14:54:12.000000000 -0600
+--- ../src2/program.lisp	2018-09-20 20:51:03.720311200 -0600
 ***************
 *** 6,12 ****
   
@@ -1011,5 +1011,8 @@ diff -rcw '--exclude=README.*' src/program.lisp src2/program.lisp
       ;; We surround the whole program with a branch pair because I don't
       ;; think that our current idea of START/FINISH boundary instructions
       ;; can be non-noops on the real machine without dissipation. This
-Only in src2: strings.lisp
-Only in src2: test.lisp
+Only in ../src2: sch.pal
+Only in ../src2: sch.r
+Only in ../src2: sch.upal
+Only in ../src2: strings.lisp
+Only in ../src2: test.lisp
