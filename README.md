@@ -208,28 +208,27 @@ This directory contains a version of the R language compiler modified by Univers
 Chris Clark for his senior project during the Fall semester of 2001.  The ([`docs/`](docs "docs/ subdirectory"))
 subdirectory contains Chris' final report which describes the details of the changes made to the compiler.
 
-### 3.4.  New source code subdirectory ([`src3/`](src3 "src3/ subdirectory")).
+### 3.4.  Comparisons between `src/` and `src2/` ([`diffs/`](diffs "diffs/ subdirectory"))
+
+This subdirectory contains several files documenting differences between the `src/` and `src2/` subdirectories.
+
+### 3.5.  New source code subdirectory ([`src3/`](src3 "src3/ subdirectory")).
 
 Our intent is that the [`src/`](src "src/ subdirectory") and [`src2/`](src2 "src2/ subdirectory") will be 
 preserved with no major changes, as an historical archive.  Any new development work on R will be carried
 out in the [`src3/`](src3 "src3/ subdirectory") subdirectory, which is initially just a copy of `src2/`.
 
-### 3.5.  Test code subdirectory ([`test/`](test "test/ subdirectory")).
+### 3.6.  Test code subdirectory ([`test/`](test "test/ subdirectory")).
 
 This directory contains various files intended for purposes of testing/exercising the compiler.
 
-### 3.6.  Top-level files:
+### 3.7.  Top-level files:
 
-#### 3.6.1.  [`COMPARE.txt`](COMPARE.txt "COMPARE.txt file") file.
-
-This file summarizes a side-by-side comparison of the original (`src/`) and 
-improved (`src2/`) versions of the *Rcomp* compiler.
-
-#### 3.6.2.  README file ([`README.md`](README.md "README.md file")).
+#### 3.7.2.  README file ([`README.md`](README.md "README.md file")).
 
 This file, written in GitHub-flavored Markdown syntax.
 
-#### 3.6.3.  To-Do file ([`TO-DO.txt`](TO-DO.txt "To-Do text file")).
+#### 3.7.3.  To-Do file ([`TO-DO.txt`](TO-DO.txt "To-Do text file")).
 
 Notes on things to do with this repository.
 
